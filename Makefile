@@ -8,6 +8,7 @@ ifdef gpu
 SRC = SECPK1/IntGroup.cpp main.cpp SECPK1/Random.cpp \
       Timer.cpp SECPK1/Int.cpp SECPK1/IntMod.cpp \
       SECPK1/Point.cpp SECPK1/SECP256K1.cpp \
+      Base58.cpp \
       GPU/GPUEngine.o Kangaroo.cpp HashTable.cpp \
       Backup.cpp Thread.cpp Check.cpp Network.cpp Merge.cpp PartMerge.cpp
 
@@ -17,6 +18,7 @@ OBJET = $(addprefix $(OBJDIR)/, \
       SECPK1/IntGroup.o main.o SECPK1/Random.o \
       Timer.o SECPK1/Int.o SECPK1/IntMod.o \
       SECPK1/Point.o SECPK1/SECP256K1.o \
+      Base58.o \
       GPU/GPUEngine.o Kangaroo.o HashTable.o Thread.o \
       Backup.o Check.o Network.o Merge.o PartMerge.o)
 
@@ -25,6 +27,7 @@ else
 SRC = SECPK1/IntGroup.cpp main.cpp SECPK1/Random.cpp \
       Timer.cpp SECPK1/Int.cpp SECPK1/IntMod.cpp \
       SECPK1/Point.cpp SECPK1/SECP256K1.cpp \
+      Base58.cpp \
       Kangaroo.cpp HashTable.cpp Thread.cpp Check.cpp \
       Backup.cpp Network.cpp Merge.cpp PartMerge.cpp
 
@@ -34,33 +37,34 @@ OBJET = $(addprefix $(OBJDIR)/, \
       SECPK1/IntGroup.o main.o SECPK1/Random.o \
       Timer.o SECPK1/Int.o SECPK1/IntMod.o \
       SECPK1/Point.o SECPK1/SECP256K1.o \
+      Base58.o \
       Kangaroo.o HashTable.o Thread.o Check.o Backup.o \
       Network.o Merge.o PartMerge.o)
 
 endif
 
 CXX        = g++
-CUDA       = /usr/local/cuda-8.0
-CXXCUDA    = /usr/bin/g++-4.8
-NVCC       = $(CUDA)/bin/nvcc
+CUDA       = /usr/lib/cuda
+CXXCUDA    = /usr/bin/g++-8
+NVCC       = /usr/bin/nvcc
 
 ifdef gpu
 
 ifdef debug
 CXXFLAGS   = -DWITHGPU -m64  -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -g -I. -I$(CUDA)/include
 else
-CXXFLAGS   = -DWITHGPU -m64 -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -O2 -I. -I$(CUDA)/include
+CXXFLAGS   = -DWITHGPU -m64 -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -fno-stack-protector -O2 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lpthread -L$(CUDA)/lib64 -lcudart
+LFLAGS     = -lpthread -L$(CUDA)/lib64 -lcudart -lssl -lcrypto
 
 else
 
 ifdef debug
 CXXFLAGS   = -m64 -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -g -I. -I$(CUDA)/include
 else
-CXXFLAGS   =  -m64 -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -O2 -I. -I$(CUDA)/include
+CXXFLAGS   =  -m64 -mssse3 -Wno-unused-result -Wno-write-strings -Wno-format -fno-stack-protector -O2 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lpthread
+LFLAGS     = -lpthread -lssl -lcrypto
 
 endif
 
@@ -102,3 +106,7 @@ clean:
 	@rm -f obj/GPU/*.o
 	@rm -f obj/SECPK1/*.o
 
+
+
+# 0x02E9F43F810784FF1E91D8BC7C4FF06BFEE935DA71D7350734C3472FE305FEF82A
+# 0x378ABDEC51BC5D
