@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/john/Desktop/ecc-work/Kangaroo1/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named storageTest
+
+# Build rule for target.
+storageTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 storageTest
+.PHONY : storageTest
+
+# fast build rule for target.
+storageTest/fast:
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/build
+.PHONY : storageTest/fast
+
+#=============================================================================
+# Target rules for targets named kangaroo
+
+# Build rule for target.
+kangaroo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kangaroo
+.PHONY : kangaroo
+
+# fast build rule for target.
+kangaroo/fast:
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/build
+.PHONY : kangaroo/fast
+
+#=============================================================================
 # Target rules for targets named catch_kangaroo
 
 # Build rule for target.
@@ -123,26 +149,13 @@ catch_kangaroo/fast:
 	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/build
 .PHONY : catch_kangaroo/fast
 
-#=============================================================================
-# Target rules for targets named engine
-
-# Build rule for target.
-engine: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 engine
-.PHONY : engine
-
-# fast build rule for target.
-engine/fast:
-	$(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/build
-.PHONY : engine/fast
-
 kangaroo/Kangaroo.o: kangaroo/Kangaroo.cpp.o
 
 .PHONY : kangaroo/Kangaroo.o
 
 # target to build an object file
 kangaroo/Kangaroo.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Kangaroo.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Kangaroo.cpp.o
 .PHONY : kangaroo/Kangaroo.cpp.o
 
 kangaroo/Kangaroo.i: kangaroo/Kangaroo.cpp.i
@@ -151,7 +164,7 @@ kangaroo/Kangaroo.i: kangaroo/Kangaroo.cpp.i
 
 # target to preprocess a source file
 kangaroo/Kangaroo.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Kangaroo.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Kangaroo.cpp.i
 .PHONY : kangaroo/Kangaroo.cpp.i
 
 kangaroo/Kangaroo.s: kangaroo/Kangaroo.cpp.s
@@ -160,7 +173,7 @@ kangaroo/Kangaroo.s: kangaroo/Kangaroo.cpp.s
 
 # target to generate assembly for a file
 kangaroo/Kangaroo.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Kangaroo.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Kangaroo.cpp.s
 .PHONY : kangaroo/Kangaroo.cpp.s
 
 kangaroo/Thread.o: kangaroo/Thread.cpp.o
@@ -169,7 +182,7 @@ kangaroo/Thread.o: kangaroo/Thread.cpp.o
 
 # target to build an object file
 kangaroo/Thread.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Thread.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Thread.cpp.o
 .PHONY : kangaroo/Thread.cpp.o
 
 kangaroo/Thread.i: kangaroo/Thread.cpp.i
@@ -178,7 +191,7 @@ kangaroo/Thread.i: kangaroo/Thread.cpp.i
 
 # target to preprocess a source file
 kangaroo/Thread.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Thread.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Thread.cpp.i
 .PHONY : kangaroo/Thread.cpp.i
 
 kangaroo/Thread.s: kangaroo/Thread.cpp.s
@@ -187,7 +200,7 @@ kangaroo/Thread.s: kangaroo/Thread.cpp.s
 
 # target to generate assembly for a file
 kangaroo/Thread.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/kangaroo/Thread.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/kangaroo/Thread.cpp.s
 .PHONY : kangaroo/Thread.cpp.s
 
 main.o: main.cpp.o
@@ -223,7 +236,7 @@ network/Backup.o: network/Backup.cpp.o
 
 # target to build an object file
 network/Backup.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Backup.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Backup.cpp.o
 .PHONY : network/Backup.cpp.o
 
 network/Backup.i: network/Backup.cpp.i
@@ -232,7 +245,7 @@ network/Backup.i: network/Backup.cpp.i
 
 # target to preprocess a source file
 network/Backup.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Backup.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Backup.cpp.i
 .PHONY : network/Backup.cpp.i
 
 network/Backup.s: network/Backup.cpp.s
@@ -241,7 +254,7 @@ network/Backup.s: network/Backup.cpp.s
 
 # target to generate assembly for a file
 network/Backup.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Backup.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Backup.cpp.s
 .PHONY : network/Backup.cpp.s
 
 network/Check.o: network/Check.cpp.o
@@ -250,7 +263,7 @@ network/Check.o: network/Check.cpp.o
 
 # target to build an object file
 network/Check.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Check.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Check.cpp.o
 .PHONY : network/Check.cpp.o
 
 network/Check.i: network/Check.cpp.i
@@ -259,7 +272,7 @@ network/Check.i: network/Check.cpp.i
 
 # target to preprocess a source file
 network/Check.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Check.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Check.cpp.i
 .PHONY : network/Check.cpp.i
 
 network/Check.s: network/Check.cpp.s
@@ -268,7 +281,7 @@ network/Check.s: network/Check.cpp.s
 
 # target to generate assembly for a file
 network/Check.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Check.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Check.cpp.s
 .PHONY : network/Check.cpp.s
 
 network/Merge.o: network/Merge.cpp.o
@@ -277,7 +290,7 @@ network/Merge.o: network/Merge.cpp.o
 
 # target to build an object file
 network/Merge.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Merge.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Merge.cpp.o
 .PHONY : network/Merge.cpp.o
 
 network/Merge.i: network/Merge.cpp.i
@@ -286,7 +299,7 @@ network/Merge.i: network/Merge.cpp.i
 
 # target to preprocess a source file
 network/Merge.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Merge.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Merge.cpp.i
 .PHONY : network/Merge.cpp.i
 
 network/Merge.s: network/Merge.cpp.s
@@ -295,7 +308,7 @@ network/Merge.s: network/Merge.cpp.s
 
 # target to generate assembly for a file
 network/Merge.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Merge.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Merge.cpp.s
 .PHONY : network/Merge.cpp.s
 
 network/Network.o: network/Network.cpp.o
@@ -304,7 +317,7 @@ network/Network.o: network/Network.cpp.o
 
 # target to build an object file
 network/Network.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Network.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Network.cpp.o
 .PHONY : network/Network.cpp.o
 
 network/Network.i: network/Network.cpp.i
@@ -313,7 +326,7 @@ network/Network.i: network/Network.cpp.i
 
 # target to preprocess a source file
 network/Network.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Network.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Network.cpp.i
 .PHONY : network/Network.cpp.i
 
 network/Network.s: network/Network.cpp.s
@@ -322,7 +335,7 @@ network/Network.s: network/Network.cpp.s
 
 # target to generate assembly for a file
 network/Network.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/Network.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/Network.cpp.s
 .PHONY : network/Network.cpp.s
 
 network/PartMerge.o: network/PartMerge.cpp.o
@@ -331,7 +344,7 @@ network/PartMerge.o: network/PartMerge.cpp.o
 
 # target to build an object file
 network/PartMerge.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/PartMerge.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/PartMerge.cpp.o
 .PHONY : network/PartMerge.cpp.o
 
 network/PartMerge.i: network/PartMerge.cpp.i
@@ -340,7 +353,7 @@ network/PartMerge.i: network/PartMerge.cpp.i
 
 # target to preprocess a source file
 network/PartMerge.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/PartMerge.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/PartMerge.cpp.i
 .PHONY : network/PartMerge.cpp.i
 
 network/PartMerge.s: network/PartMerge.cpp.s
@@ -349,7 +362,7 @@ network/PartMerge.s: network/PartMerge.cpp.s
 
 # target to generate assembly for a file
 network/PartMerge.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/network/PartMerge.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/network/PartMerge.cpp.s
 .PHONY : network/PartMerge.cpp.s
 
 secpk1/Base58.o: secpk1/Base58.cpp.o
@@ -358,7 +371,7 @@ secpk1/Base58.o: secpk1/Base58.cpp.o
 
 # target to build an object file
 secpk1/Base58.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Base58.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Base58.cpp.o
 .PHONY : secpk1/Base58.cpp.o
 
 secpk1/Base58.i: secpk1/Base58.cpp.i
@@ -367,7 +380,7 @@ secpk1/Base58.i: secpk1/Base58.cpp.i
 
 # target to preprocess a source file
 secpk1/Base58.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Base58.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Base58.cpp.i
 .PHONY : secpk1/Base58.cpp.i
 
 secpk1/Base58.s: secpk1/Base58.cpp.s
@@ -376,7 +389,7 @@ secpk1/Base58.s: secpk1/Base58.cpp.s
 
 # target to generate assembly for a file
 secpk1/Base58.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Base58.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Base58.cpp.s
 .PHONY : secpk1/Base58.cpp.s
 
 secpk1/Int.o: secpk1/Int.cpp.o
@@ -385,7 +398,7 @@ secpk1/Int.o: secpk1/Int.cpp.o
 
 # target to build an object file
 secpk1/Int.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Int.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Int.cpp.o
 .PHONY : secpk1/Int.cpp.o
 
 secpk1/Int.i: secpk1/Int.cpp.i
@@ -394,7 +407,7 @@ secpk1/Int.i: secpk1/Int.cpp.i
 
 # target to preprocess a source file
 secpk1/Int.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Int.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Int.cpp.i
 .PHONY : secpk1/Int.cpp.i
 
 secpk1/Int.s: secpk1/Int.cpp.s
@@ -403,7 +416,7 @@ secpk1/Int.s: secpk1/Int.cpp.s
 
 # target to generate assembly for a file
 secpk1/Int.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Int.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Int.cpp.s
 .PHONY : secpk1/Int.cpp.s
 
 secpk1/IntGroup.o: secpk1/IntGroup.cpp.o
@@ -412,7 +425,7 @@ secpk1/IntGroup.o: secpk1/IntGroup.cpp.o
 
 # target to build an object file
 secpk1/IntGroup.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntGroup.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntGroup.cpp.o
 .PHONY : secpk1/IntGroup.cpp.o
 
 secpk1/IntGroup.i: secpk1/IntGroup.cpp.i
@@ -421,7 +434,7 @@ secpk1/IntGroup.i: secpk1/IntGroup.cpp.i
 
 # target to preprocess a source file
 secpk1/IntGroup.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntGroup.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntGroup.cpp.i
 .PHONY : secpk1/IntGroup.cpp.i
 
 secpk1/IntGroup.s: secpk1/IntGroup.cpp.s
@@ -430,7 +443,7 @@ secpk1/IntGroup.s: secpk1/IntGroup.cpp.s
 
 # target to generate assembly for a file
 secpk1/IntGroup.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntGroup.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntGroup.cpp.s
 .PHONY : secpk1/IntGroup.cpp.s
 
 secpk1/IntMod.o: secpk1/IntMod.cpp.o
@@ -439,7 +452,7 @@ secpk1/IntMod.o: secpk1/IntMod.cpp.o
 
 # target to build an object file
 secpk1/IntMod.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntMod.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntMod.cpp.o
 .PHONY : secpk1/IntMod.cpp.o
 
 secpk1/IntMod.i: secpk1/IntMod.cpp.i
@@ -448,7 +461,7 @@ secpk1/IntMod.i: secpk1/IntMod.cpp.i
 
 # target to preprocess a source file
 secpk1/IntMod.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntMod.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntMod.cpp.i
 .PHONY : secpk1/IntMod.cpp.i
 
 secpk1/IntMod.s: secpk1/IntMod.cpp.s
@@ -457,7 +470,7 @@ secpk1/IntMod.s: secpk1/IntMod.cpp.s
 
 # target to generate assembly for a file
 secpk1/IntMod.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/IntMod.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/IntMod.cpp.s
 .PHONY : secpk1/IntMod.cpp.s
 
 secpk1/Point.o: secpk1/Point.cpp.o
@@ -466,7 +479,7 @@ secpk1/Point.o: secpk1/Point.cpp.o
 
 # target to build an object file
 secpk1/Point.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Point.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Point.cpp.o
 .PHONY : secpk1/Point.cpp.o
 
 secpk1/Point.i: secpk1/Point.cpp.i
@@ -475,7 +488,7 @@ secpk1/Point.i: secpk1/Point.cpp.i
 
 # target to preprocess a source file
 secpk1/Point.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Point.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Point.cpp.i
 .PHONY : secpk1/Point.cpp.i
 
 secpk1/Point.s: secpk1/Point.cpp.s
@@ -484,7 +497,7 @@ secpk1/Point.s: secpk1/Point.cpp.s
 
 # target to generate assembly for a file
 secpk1/Point.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Point.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Point.cpp.s
 .PHONY : secpk1/Point.cpp.s
 
 secpk1/Random.o: secpk1/Random.cpp.o
@@ -493,7 +506,7 @@ secpk1/Random.o: secpk1/Random.cpp.o
 
 # target to build an object file
 secpk1/Random.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Random.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Random.cpp.o
 .PHONY : secpk1/Random.cpp.o
 
 secpk1/Random.i: secpk1/Random.cpp.i
@@ -502,7 +515,7 @@ secpk1/Random.i: secpk1/Random.cpp.i
 
 # target to preprocess a source file
 secpk1/Random.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Random.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Random.cpp.i
 .PHONY : secpk1/Random.cpp.i
 
 secpk1/Random.s: secpk1/Random.cpp.s
@@ -511,7 +524,7 @@ secpk1/Random.s: secpk1/Random.cpp.s
 
 # target to generate assembly for a file
 secpk1/Random.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/Random.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/Random.cpp.s
 .PHONY : secpk1/Random.cpp.s
 
 secpk1/SECP256K1.o: secpk1/SECP256K1.cpp.o
@@ -520,7 +533,7 @@ secpk1/SECP256K1.o: secpk1/SECP256K1.cpp.o
 
 # target to build an object file
 secpk1/SECP256K1.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/SECP256K1.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/SECP256K1.cpp.o
 .PHONY : secpk1/SECP256K1.cpp.o
 
 secpk1/SECP256K1.i: secpk1/SECP256K1.cpp.i
@@ -529,7 +542,7 @@ secpk1/SECP256K1.i: secpk1/SECP256K1.cpp.i
 
 # target to preprocess a source file
 secpk1/SECP256K1.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/SECP256K1.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/SECP256K1.cpp.i
 .PHONY : secpk1/SECP256K1.cpp.i
 
 secpk1/SECP256K1.s: secpk1/SECP256K1.cpp.s
@@ -538,7 +551,7 @@ secpk1/SECP256K1.s: secpk1/SECP256K1.cpp.s
 
 # target to generate assembly for a file
 secpk1/SECP256K1.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/secpk1/SECP256K1.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/secpk1/SECP256K1.cpp.s
 .PHONY : secpk1/SECP256K1.cpp.s
 
 storage/HashTable.o: storage/HashTable.cpp.o
@@ -547,7 +560,7 @@ storage/HashTable.o: storage/HashTable.cpp.o
 
 # target to build an object file
 storage/HashTable.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/storage/HashTable.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/storage/HashTable.cpp.o
 .PHONY : storage/HashTable.cpp.o
 
 storage/HashTable.i: storage/HashTable.cpp.i
@@ -556,7 +569,7 @@ storage/HashTable.i: storage/HashTable.cpp.i
 
 # target to preprocess a source file
 storage/HashTable.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/storage/HashTable.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/storage/HashTable.cpp.i
 .PHONY : storage/HashTable.cpp.i
 
 storage/HashTable.s: storage/HashTable.cpp.s
@@ -565,8 +578,35 @@ storage/HashTable.s: storage/HashTable.cpp.s
 
 # target to generate assembly for a file
 storage/HashTable.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/storage/HashTable.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/storage/HashTable.cpp.s
 .PHONY : storage/HashTable.cpp.s
+
+test/storageTest.o: test/storageTest.cpp.o
+
+.PHONY : test/storageTest.o
+
+# target to build an object file
+test/storageTest.cpp.o:
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/test/storageTest.cpp.o
+.PHONY : test/storageTest.cpp.o
+
+test/storageTest.i: test/storageTest.cpp.i
+
+.PHONY : test/storageTest.i
+
+# target to preprocess a source file
+test/storageTest.cpp.i:
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/test/storageTest.cpp.i
+.PHONY : test/storageTest.cpp.i
+
+test/storageTest.s: test/storageTest.cpp.s
+
+.PHONY : test/storageTest.s
+
+# target to generate assembly for a file
+test/storageTest.cpp.s:
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/test/storageTest.cpp.s
+.PHONY : test/storageTest.cpp.s
 
 utils/Timer.o: utils/Timer.cpp.o
 
@@ -574,7 +614,7 @@ utils/Timer.o: utils/Timer.cpp.o
 
 # target to build an object file
 utils/Timer.cpp.o:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/utils/Timer.cpp.o
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/utils/Timer.cpp.o
 .PHONY : utils/Timer.cpp.o
 
 utils/Timer.i: utils/Timer.cpp.i
@@ -583,7 +623,7 @@ utils/Timer.i: utils/Timer.cpp.i
 
 # target to preprocess a source file
 utils/Timer.cpp.i:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/utils/Timer.cpp.i
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/utils/Timer.cpp.i
 .PHONY : utils/Timer.cpp.i
 
 utils/Timer.s: utils/Timer.cpp.s
@@ -592,7 +632,7 @@ utils/Timer.s: utils/Timer.cpp.s
 
 # target to generate assembly for a file
 utils/Timer.cpp.s:
-	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/utils/Timer.cpp.s
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/utils/Timer.cpp.s
 .PHONY : utils/Timer.cpp.s
 
 # Help Target
@@ -601,10 +641,11 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... edit_cache"
+	@echo "... storageTest"
+	@echo "... kangaroo"
 	@echo "... rebuild_cache"
 	@echo "... catch_kangaroo"
-	@echo "... edit_cache"
-	@echo "... engine"
 	@echo "... kangaroo/Kangaroo.o"
 	@echo "... kangaroo/Kangaroo.i"
 	@echo "... kangaroo/Kangaroo.s"
@@ -653,6 +694,9 @@ help:
 	@echo "... storage/HashTable.o"
 	@echo "... storage/HashTable.i"
 	@echo "... storage/HashTable.s"
+	@echo "... test/storageTest.o"
+	@echo "... test/storageTest.i"
+	@echo "... test/storageTest.s"
 	@echo "... utils/Timer.o"
 	@echo "... utils/Timer.i"
 	@echo "... utils/Timer.s"

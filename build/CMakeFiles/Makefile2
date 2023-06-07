@@ -53,53 +53,91 @@ CMAKE_BINARY_DIR = /home/john/Desktop/ecc-work/Kangaroo1/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/storageTest.dir/all
+all: CMakeFiles/kangaroo.dir/all
 all: CMakeFiles/catch_kangaroo.dir/all
-all: engine/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: engine/preinstall
+preinstall:
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/storageTest.dir/clean
+clean: CMakeFiles/kangaroo.dir/clean
 clean: CMakeFiles/catch_kangaroo.dir/clean
-clean: engine/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory engine
+# Target rules for target CMakeFiles/storageTest.dir
 
-# Recursive "all" directory target.
-engine/all: engine/CMakeFiles/engine.dir/all
+# All Build rule for target.
+CMakeFiles/storageTest.dir/all: CMakeFiles/kangaroo.dir/all
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/depend
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles --progress-num=20,21 "Built target storageTest"
+.PHONY : CMakeFiles/storageTest.dir/all
 
-.PHONY : engine/all
+# Build rule for subdir invocation for target.
+CMakeFiles/storageTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 19
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/storageTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 0
+.PHONY : CMakeFiles/storageTest.dir/rule
 
-# Recursive "preinstall" directory target.
-engine/preinstall:
+# Convenience name for target.
+storageTest: CMakeFiles/storageTest.dir/rule
 
-.PHONY : engine/preinstall
+.PHONY : storageTest
 
-# Recursive "clean" directory target.
-engine/clean: engine/CMakeFiles/engine.dir/clean
+# clean rule for target.
+CMakeFiles/storageTest.dir/clean:
+	$(MAKE) -f CMakeFiles/storageTest.dir/build.make CMakeFiles/storageTest.dir/clean
+.PHONY : CMakeFiles/storageTest.dir/clean
 
-.PHONY : engine/clean
+#=============================================================================
+# Target rules for target CMakeFiles/kangaroo.dir
+
+# All Build rule for target.
+CMakeFiles/kangaroo.dir/all:
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/depend
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target kangaroo"
+.PHONY : CMakeFiles/kangaroo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/kangaroo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 17
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/kangaroo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 0
+.PHONY : CMakeFiles/kangaroo.dir/rule
+
+# Convenience name for target.
+kangaroo: CMakeFiles/kangaroo.dir/rule
+
+.PHONY : kangaroo
+
+# clean rule for target.
+CMakeFiles/kangaroo.dir/clean:
+	$(MAKE) -f CMakeFiles/kangaroo.dir/build.make CMakeFiles/kangaroo.dir/clean
+.PHONY : CMakeFiles/kangaroo.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/catch_kangaroo.dir
 
 # All Build rule for target.
-CMakeFiles/catch_kangaroo.dir/all: engine/CMakeFiles/engine.dir/all
+CMakeFiles/catch_kangaroo.dir/all: CMakeFiles/kangaroo.dir/all
 	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/depend
 	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target catch_kangaroo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles --progress-num=1,2 "Built target catch_kangaroo"
 .PHONY : CMakeFiles/catch_kangaroo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/catch_kangaroo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 19
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/catch_kangaroo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 0
 .PHONY : CMakeFiles/catch_kangaroo.dir/rule
@@ -113,33 +151,6 @@ catch_kangaroo: CMakeFiles/catch_kangaroo.dir/rule
 CMakeFiles/catch_kangaroo.dir/clean:
 	$(MAKE) -f CMakeFiles/catch_kangaroo.dir/build.make CMakeFiles/catch_kangaroo.dir/clean
 .PHONY : CMakeFiles/catch_kangaroo.dir/clean
-
-#=============================================================================
-# Target rules for target engine/CMakeFiles/engine.dir
-
-# All Build rule for target.
-engine/CMakeFiles/engine.dir/all:
-	$(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/depend
-	$(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles --progress-num=19,20,21 "Built target engine"
-.PHONY : engine/CMakeFiles/engine.dir/all
-
-# Build rule for subdir invocation for target.
-engine/CMakeFiles/engine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 engine/CMakeFiles/engine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles 0
-.PHONY : engine/CMakeFiles/engine.dir/rule
-
-# Convenience name for target.
-engine: engine/CMakeFiles/engine.dir/rule
-
-.PHONY : engine
-
-# clean rule for target.
-engine/CMakeFiles/engine.dir/clean:
-	$(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/clean
-.PHONY : engine/CMakeFiles/engine.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

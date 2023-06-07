@@ -1,6 +1,5 @@
+/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/edit_cache.dir
+/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/storageTest.dir
+/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/kangaroo.dir
 /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/rebuild_cache.dir
 /home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/catch_kangaroo.dir
-/home/john/Desktop/ecc-work/Kangaroo1/build/CMakeFiles/edit_cache.dir
-/home/john/Desktop/ecc-work/Kangaroo1/build/engine/CMakeFiles/rebuild_cache.dir
-/home/john/Desktop/ecc-work/Kangaroo1/build/engine/CMakeFiles/engine.dir
-/home/john/Desktop/ecc-work/Kangaroo1/build/engine/CMakeFiles/edit_cache.dir

@@ -24,6 +24,9 @@
 #ifdef WIN64
 #include <Windows.h>
 #endif
+#include <sw/redis++/redis++.h>
+
+using namespace sw::redis;
 
 #define HASH_SIZE_BIT 18
 #define HASH_SIZE (1 << HASH_SIZE_BIT)
@@ -88,7 +91,7 @@ public:
   void SeekNbItem(FILE *f, bool restorePos = false);
   void SeekNbItem(FILE *f, uint32_t from, uint32_t to);
 
-  HASH_ENTRY E[HASH_SIZE];
+  // HASH_ENTRY E[HASH_SIZE];
   // Collision info
   Int kDist;
   uint32_t kType;
@@ -104,6 +107,7 @@ private:
   ENTRY *CreateEntry(int128_t *x, int128_t *d);
   static int compare(int128_t *i1, int128_t *i2);
   std::string GetStr(int128_t *i);
+  std::shared_ptr<Redis> redis;
 };
 
 #endif // HASHTABLEH

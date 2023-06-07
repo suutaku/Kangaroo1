@@ -27,10 +27,15 @@
 
 HashTable::HashTable() { memset(E, 0, sizeof(E)); }
 
+HashTable::HashTable(std::string redis_server) {
+  redis = std::make_shared<Redis>(redis_server);
+}
+
 void HashTable::Reset() {
   for (uint32_t h = 0; h < HASH_SIZE; h++) {
     if (E[h].items) {
-      for (uint32_t i = 0; i < E[h].nbItem; i++) free(E[h].items[i]);
+      for (uint32_t i = 0; i < E[h].nbItem; i++)
+        free(E[h].items[i]);
     }
     safe_free(E[h].items);
     E[h].maxItem = 0;
@@ -40,7 +45,8 @@ void HashTable::Reset() {
 
 uint64_t HashTable::GetNbItem() {
   uint64_t totalItem = 0;
-  for (uint64_t h = 0; h < HASH_SIZE; h++) totalItem += (uint64_t)E[h].nbItem;
+  for (uint64_t h = 0; h < HASH_SIZE; h++)
+    totalItem += (uint64_t)E[h].nbItem;
 
   return totalItem;
 }
@@ -54,12 +60,13 @@ ENTRY *HashTable::CreateEntry(int128_t *x, int128_t *d) {
   return e;
 }
 
-#define ADD_ENTRY(entry)                                                      \
-  {                                                                           \
-    /* Shift the end of the index table */                                    \
-    for (int i = E[h].nbItem; i > st; i--) E[h].items[i] = E[h].items[i - 1]; \
-    E[h].items[st] = entry;                                                   \
-    E[h].nbItem++;                                                            \
+#define ADD_ENTRY(entry)                                                       \
+  {                                                                            \
+    /* Shift the end of the index table */                                     \
+    for (int i = E[h].nbItem; i > st; i--)                                     \
+      E[h].items[i] = E[h].items[i - 1];                                       \
+    E[h].items[st] = entry;                                                    \
+    E[h].nbItem++;                                                             \
   }
 
 void HashTable::Convert(Int *x, Int *d, uint32_t type, uint64_t *h, int128_t *X,
@@ -88,15 +95,15 @@ void HashTable::Convert(Int *x, Int *d, uint32_t type, uint64_t *h, int128_t *X,
   *h = (x->bits64[2] & HASH_MASK);
 }
 
-#define AV1()                \
-  if (pnb1) {                \
-    ::fread(&e1, 32, 1, f1); \
-    pnb1--;                  \
+#define AV1()                                                                  \
+  if (pnb1) {                                                                  \
+    ::fread(&e1, 32, 1, f1);                                                   \
+    pnb1--;                                                                    \
   }
-#define AV2()                \
-  if (pnb2) {                \
-    ::fread(&e2, 32, 1, f2); \
-    pnb2--;                  \
+#define AV2()                                                                  \
+  if (pnb2) {                                                                  \
+    ::fread(&e2, 32, 1, f2);                                                   \
+    pnb2--;                                                                    \
   }
 
 int HashTable::MergeH(uint32_t h, FILE *f1, FILE *f2, FILE *fd, uint32_t *nbDP,
@@ -236,7 +243,8 @@ void HashTable::CalcDistAndType(int128_t d, Int *kDist, uint32_t *kType) {
   kDist->SetInt32(0);
   kDist->bits64[0] = d.i64[0];
   kDist->bits64[1] = d.i64[1];
-  if (sign) kDist->ModNegK1order();
+  if (sign)
+    kDist->ModNegK1order();
 }
 
 int HashTable::Add(uint64_t h, ENTRY *e) {
