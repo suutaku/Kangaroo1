@@ -223,7 +223,7 @@ Starting client, using gpu and connect to the server linpons, backup kangaroos e
 Kangaroo.exe -t 0 -gpu -w kang.work -wi 600 -c linpons
 ```
 
-![Client server architecture](DOC/architecture.jpg)
+![Client server architecture](doc/architecture.jpg)
 
 **What to do in case of a server crash:**\
 When the server is stopped, clients wait for reconnection, so simply restart it, no need to reload a backup if using wsplit (recommended).\
@@ -244,7 +244,7 @@ This program also solved #115 in 13 days (114 bit key on the Secp256K1 field). I
 The picture below show the probability of success after a certain number of group operations. N is range size.
 This plot does not take into consideration the DP overhead.
 
-![Probability of success](DOC/successprob.jpg)
+![Probability of success](doc/successprob.jpg)
 
 
 # How it works
@@ -289,7 +289,7 @@ k = k1 + Tame.dist - Wild.dist</br>
 
 Here is an illustration of what's happening. When 2 paths collide they form a shape similar to the lambda letter. This is why this method is also called lambda method.
 
-![Paths](DOC/paths.jpg)
+![Paths](doc/paths.jpg)
 
 # Compilation
 
